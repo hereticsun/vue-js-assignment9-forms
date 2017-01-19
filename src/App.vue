@@ -17,6 +17,51 @@
                     <!-- Exercise 3 -->
                     <!-- Edit the Example from above and create a custom "Full Name" Control -->
                     <!-- which still holds the First Name and Last Name Input Field -->
+
+                    <h1>Sign Up</h1>
+                    <hr />
+                    <div class="form-group">
+                        <label for="fullname">Fullname</label>
+                        <input
+                            type="text"
+                            id="fullname"
+                            placeholder="Your fullname (i.e. first name + last name)"
+                            class="form-control"
+                            v-model="userData.fullname">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input
+                            type="text"
+                            id="email"
+                            class="form-control"
+                            placeholder="Your email address (e.g. 'example@test.com')"
+                            v-model="userData.email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            class="form-control"
+                            v-model="userData.password">
+                    </div>
+                    <div class="form-group">
+                        <label for="store-data-ok">
+                            <input
+                                    type="radio"
+                                    id="store-data-ok"
+                                    value="true"
+                                    v-model="storeData"> Store data
+                        </label>
+                        <label for="store-data-no">
+                            <input
+                                    type="radio"
+                                    id="store-data-no"
+                                    value="false"
+                                    v-model="storeData"> Do not store data
+                        </label>
+                    </div>
                 </div>
             </div>
         </form>
@@ -28,10 +73,10 @@
                         <h4>Your Data</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Full Name: </p>
-                        <p>Mail: </p>
-                        <p>Password: </p>
-                        <p>Store in Database?: </p>
+                        <p>Full Name: {{ userData.fullname }}</p>
+                        <p>Mail: {{ userData.email }}</p>
+                        <p>Password: {{ userData.password }}</p>
+                        <p>Store in Database?: {{ storeData }}</p>
                     </div>
                 </div>
             </div>
@@ -41,6 +86,18 @@
 
 <script>
     export default {
+        data() {
+            return {
+                userData: {
+                    fullname: '',
+                    email: '',
+                    password: ''
+                },
+                storeData: true
+            };
+        },
+        methods: {},
+        components: {}
     }
 </script>
 
