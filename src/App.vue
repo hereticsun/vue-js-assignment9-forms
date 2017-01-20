@@ -20,15 +20,7 @@
 
                     <h1>Sign Up</h1>
                     <hr />
-                    <div class="form-group">
-                        <label for="fullname">Fullname</label>
-                        <input
-                            type="text"
-                            id="fullname"
-                            placeholder="Your fullname (i.e. first name + last name)"
-                            class="form-control"
-                            v-model="userData.fullname">
-                    </div>
+                    <app-full-name v-model="userData.fullName"></app-full-name>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input
@@ -68,6 +60,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                     <button
+                            type="submit"
                             class="btn btn-primary"
                             @click.prevent="submitted">Submit!
                     </button>
@@ -81,7 +74,7 @@
                         <h4>Your Data</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Full Name: {{ userData.fullname }}</p>
+                        <p>Full Name: {{ userData.fullName }}</p>
                         <p>Mail: {{ userData.email }}</p>
                         <p>Password: {{ userData.password }}</p>
                         <p>Store in Database?: {{ storeData }}</p>
@@ -93,11 +86,13 @@
 </template>
 
 <script>
+    import Fullname from './Fullname.vue';
+
     export default {
         data() {
             return {
                 userData: {
-                    fullname: '',
+                    fullName: 'Bob Hope',
                     email: '',
                     password: ''
                 },
@@ -110,9 +105,8 @@
                 this.isSubmitted = true;
             }
         },
-        components: {}
+        components: {
+            appFullName: Fullname
+        }
     }
 </script>
-
-<style>
-</style>
